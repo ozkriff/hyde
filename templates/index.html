@@ -19,20 +19,20 @@
         <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path="rss.xml", trailing_slash=false) }}">
       {% endif %}
 
+      {% if config.extra.hyde_google_analytics_account %}
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ config.extra.hyde_google_analytics_account }}"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '{{ config.extra.hyde_google_analytics_account }}');
+        </script>
+      {% endif %}
+
       {% block extra_head %}
       {% endblock extra_head %}
     </head>
-
-    {% if config.extra.hyde_google_analytics_account %}
-      <!-- Global Site Tag (gtag.js) - Google Analytics -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id={{ config.extra.hyde_google_analytics_account }}"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '{{ config.extra.hyde_google_analytics_account }}');
-      </script>
-    {% endif %}
 
     <body class="{{ config.extra.hyde_theme }} {% if config.extra.hyde_reverse %}layout-reverse{% endif %}">
         {% block sidebar %}
